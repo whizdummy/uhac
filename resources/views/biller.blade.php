@@ -4,14 +4,14 @@
  <nav class="orange darken-2" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Admin View</a>
       <ul class="right hide-on-med-and-down">
-        <li class="active"><a href="#" >Biller</a></li>
-         <li><a href="#">Category</a></li>
+        <li class="active"><a href="{!! url('biller-maintenance') !!}" >Biller</a></li>
+         <li><a href="{!! url('category-maintenance') !!}">Category</a></li>
         <li><a href="#">Business Dependencies</a></li>
 
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Biller</a></li>
+          <li><a href="{!! url('biller-maintenance') !!}">Biller</a></li>
           <li><a href="#">Business Dependencies</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -21,7 +21,7 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container white z-depth-1" style="border-radius: 10px;">
       <div class="row z-depth-2">
-        <h1 class="orange white-text darken-1" style="border-top-left: 10px !important; border-top-right: 10px !important; margin-bottom: 0;">Biller <span class="thin"> Mainetenance</span></h1>
+        <h1 class="orange white-text darken-1" style="border-top-left: 10px !important; border-top-right: 10px !important; margin-bottom: 0;">Biller <span class="thin"> Maintenance</span></h1>
 
       </div>
       <div class="row right">

@@ -4,14 +4,14 @@
  <nav class="orange darken-2" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Admin View</a>
       <ul class="right hide-on-med-and-down">
-        <li ><a href="#">Biller</a></li>
-        <li class="active"><a href="#" >Category</a></li>
+        <li ><a href="{!! url('biller-maintenance') !!}">Biller</a></li>
+        <li class="active"><a href="{!! url('category-maintenance') !!}">Category</a></li>
         <li><a href="#">Business Dependencies</a></li>
 
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Biller</a></li>
+          <li><a href="{!! url('biller-maintenance') !!}">Biller</a></li>
           <li><a href="#">Business Dependencies</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
