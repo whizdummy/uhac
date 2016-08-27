@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('category');
 });
+
 
 Route::group(['prefix' => 'api/finapp'], function(){
 

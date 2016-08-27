@@ -1,45 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{!! asset('css/materialize.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{!! asset('css/style.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{!! asset('css/jquery.dataTables.min.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{!! asset('css/angular-datatables.css') !!}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body class="orange darken-2" ng-app = "app">
+   
+ @yield('mainBody')
+  <!--  Scripts-->
+  <script src="{!! asset('js/jquery-2.1.1.min.js') !!}"></script>
+  <script src="{!! asset('js/angular.min.js') !!}"></script>
+  <script src="{!! asset('js/materialize.js') !!}"></script>
+  <script src="{!! asset('js/angular-resource.min.js') !!}"></script>
+  <script src="{!! asset('js/jquery.dataTables.min.js') !!}"></script>
+  <script src="{!! asset('js/angular-datatables.min.js') !!}"></script>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+  
+  <script src="{!! asset('js/init.js') !!}"></script>
+   
+  <script src="{!! asset('js/app/app.js') !!}"></script>
+  <script src="{!! asset('js/app/controller/billerCtrl.ctr.js') !!}"></script>
+ <script src="{!! asset('js/app/controller/businessDepCtrl.ctr.js') !!}"></script>
+  <script src="{!! asset('js/app/controller/categoryCtrl.ctr.js') !!}"></script>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
+  </body>
 </html>
