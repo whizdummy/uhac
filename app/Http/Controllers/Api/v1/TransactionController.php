@@ -39,36 +39,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->transactionType === (int) 1) {
-            // Transfer
-        } else if($request->transactionType === (int) 2) {
-            // Expense
-            if($request->isBank) {
-                // Bank
-            } else {
-                // Manual input
-                $this->createTransactionManual($request);
-            }
-        } else if($request->transactionType === (int) 3) {
-            // Income or Savings
-            $this->createTransactionManual($request);
-        } else {
-            return response()
-            ->json(
-                [
-                    'message'       =>  'Invalid transaction type'
-                ],
-                500
-            );
-        }
-
-        return response()
-            ->json(
-                [
-                    'message'       =>  'Transaction added successfully'
-                ],
-                200
-            );
+        // 
     }
 
     /**
@@ -102,7 +73,36 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->transactionType === (int) 1) {
+            // Transfer
+        } else if($request->transactionType === (int) 2) {
+            // Expense
+            if($request->isBank) {
+                // Bank
+            } else {
+                // Manual input
+                $this->createTransactionManual($request);
+            }
+        } else if($request->transactionType === (int) 3) {
+            // Income or Savings
+            $this->createTransactionManual($request);
+        } else {
+            return response()
+            ->json(
+                [
+                    'message'       =>  'Invalid transaction type'
+                ],
+                500
+            );
+        }
+
+        return response()
+            ->json(
+                [
+                    'message'       =>  'Transaction added successfully'
+                ],
+                200
+            );
     }
 
     /**
@@ -118,7 +118,7 @@ class TransactionController extends Controller
 
     public function createTransactionManual(Request $request)
     {
-        Transaction::create([
+        Transaction::update([
             'int_bank_account_id_fk'    => $request->int_bank_account_id,
             'int_transaction_type'      => $request->transactionType,
             'int_category_id_fk'        => $request->int_category_id,
