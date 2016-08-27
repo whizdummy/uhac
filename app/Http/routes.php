@@ -23,7 +23,7 @@ Route::group(['prefix' => 'api/finapp'], function(){
 
 			Route::group(['prefix' => '{id}'], function(){
 
-				Route::resource('bank_accounts', 'Api\v1\BankAccountController');
+				Route::resource('bank-accounts', 'Api\v1\BankAccountController');
 
 			});
 

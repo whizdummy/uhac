@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\ApiModel\v1\Account;
+use App\ApiModel\v1\BankAccount;
 
 class BankAccountController extends Controller
 {
@@ -16,9 +17,15 @@ class BankAccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        return response()
+            ->json(
+                [
+                    'bank_accounts'         =>  $this->queryBankAccount($id)
+                ],
+                200
+            );
     }
 
     /**
@@ -101,15 +108,14 @@ class BankAccountController extends Controller
     public function queryBankAccount($id){
 
         $bank_accounts          =   Account::select(
-            'account.str_name',
-            'account.str_contact_no',
-            'bank_account.str_account_no'
+            'accounts.str_name',
+            'bank_accounts.str_account_no'
             )
-            ->join('bank_accounts', 'account.int_account_id', '=', 'bank_accounts.int_account_id_fk');
+            ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk');
 
         if ($id){
 
-            return $bank_accounts->where('account.int_account_id', '=', $id)
+            return $bank_accounts->where('accounts.int_account_id', '=', $id)
                 ->get();
 
         }//end if
