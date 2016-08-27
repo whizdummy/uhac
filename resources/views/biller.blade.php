@@ -1,23 +1,6 @@
  @extends('welcome')
  @section('mainBody')
  <div ng-controller = "billerCtrl as vm">
- <nav class="orange darken-2" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Admin View</a>
-      <ul class="right hide-on-med-and-down">
-        <li class="active"><a href="{!! url('biller-maintenance') !!}" >Biller</a></li>
-         <li><a href="{!! url('category-maintenance') !!}">Category</a></li>
-        <li><a href="#">Business Dependencies</a></li>
-
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-          <li><a href="{!! url('biller-maintenance') !!}">Biller</a></li>
-          <li><a href="#">Business Dependencies</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
   <div class="section no-pad-bot" id="index-banner">
     <div class="container white z-depth-1" style="border-radius: 10px;">
       <div class="row z-depth-2">
