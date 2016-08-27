@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/category-maintenance', function () {
     return view('category');
+});
+Route::get('/biller-maintenance', function () {
+    return view('biller');
 });
 
 
