@@ -39,7 +39,23 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        $goal = Goal::create([
+            'int_account_id_fk'     => $request->int_account_id,
+            'int_category_id_fk'    => $request->int_category_id,
+            'str_goal_name'         => $request->str_goal_name,
+            'txt_remarks'           => $request->txt_remarks ? $request->txt_remarks : null,
+            'deci_value'            => $request->deci_value,
+            'date_due'              => $request->date_due
+        ]);
+
+        return response()
+            ->json(
+                [
+                    'goal'          =>  $goal,
+                    'message'           =>  'Goal is successfully created.'
+                ],
+                201
+            );
     }
 
     /**
