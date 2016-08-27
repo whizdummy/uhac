@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\ApiModel\v1\Account;
+use App\ApiModel\v1\BankAccount;
 use App\ApiModel\v1\Session;
 
 use Carbon\Carbon;
@@ -60,6 +61,11 @@ class AccountController extends Controller
                 'str_password'      =>  bcrypt($request->str_password),
                 'str_email'         =>  $request->str_email,
                 'str_contact'       =>  $request->str_contact
+            ]);
+
+            $bank_account       =   BankAccount::create([
+                'int_account_id_fk'     =>  $account->int_account_id,
+                'str_account_no'        =>  'Cash'
             ]);
 
             $session            =   Session::create([

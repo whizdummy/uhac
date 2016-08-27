@@ -39,6 +39,7 @@ class CreateTransactionsTable extends Migration
                 ->nullable();
             $table->decimal('deci_value')
                 ->nullable();
+            $table->boolean('boolStatus');
             $table->timestamps();
 
             $table->foreign('int_bank_account_id_fk')

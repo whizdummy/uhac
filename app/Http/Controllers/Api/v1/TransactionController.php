@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use ApiModel\v1\Transaction;
+use App\ApiModel\v1\Transaction;
 
 class TransactionController extends Controller
 {
@@ -16,7 +16,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id, $bankAccountId)
     {
         //
     }
@@ -37,9 +37,18 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, $bankAccountId, Request $request)
     {
-        // 
+        $transaction            =   Transaction::create([
+            'int_bank_account_id_fk'        =>  $bankAccountId
+        ]);
+        return response()
+            ->json(
+                [
+                    'transaction'       =>  $transaction
+                ],
+                201
+            );
     }
 
     /**
@@ -71,30 +80,34 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($accountId, $bankAccountId, Request $request, $transactionId)
     {
-        if($request->transactionType === (int) 1) {
+        $transaction                =   Transaction::find($transactionId);
+
+        if($request->transactionType < (int) 3) {
             // Transfer
-        } else if($request->transactionType === (int) 2) {
-            // Expense
-            if($request->isBank) {
-                // Bank
-            } else {
-                // Manual input
-                $this->createTransactionManual($request);
-            }
-        } else if($request->transactionType === (int) 3) {
-            // Income or Savings
-            $this->createTransactionManual($request);
         } else {
             return response()
             ->json(
                 [
-                    'message'       =>  'Invalid transaction type'
+                    'message'       =>  'Invalid transaction type.'
                 ],
                 500
             );
         }
+
+        $transaction->int_bank_account_id_fk        =   $request->int_bank_account_id;
+        $transaction->int_transaction_type          =   $request->transactionType;
+        $transaction->int_category_id_fk            =   $request->int_category_id;
+        $transaction->deci_value                    =   $request->deci_value;
+        $transaction->int_bill_id_fk                =   $request->int_bill_id;
+        $transaction->int_transfer_account_id_fk    =   $request->int_transfer_account_id;
+        $transaction->str_confirmation_no           =   $request->str_confirmation_no;
+        $transaction->str_source_currency           =   $request->str_source_currency;
+        $transaction->str_transfer_currency         =   $request->str_transfer_currency;
+        $transaction->boolStatus                    =   $request->status == 'S'? 1: 0;
+
+        $transaction->save();
 
         return response()
             ->json(
@@ -114,15 +127,5 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function createTransactionManual(Request $request)
-    {
-        Transaction::update([
-            'int_bank_account_id_fk'    => $request->int_bank_account_id,
-            'int_transaction_type'      => $request->transactionType,
-            'int_category_id_fk'        => $request->int_category_id,
-            'deci_value'                => $request->deci_value
-        ]);
     }
 }
