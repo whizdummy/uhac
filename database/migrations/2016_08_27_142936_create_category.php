@@ -18,6 +18,8 @@ class CreateCategory extends Migration
             $table->increments('int_category_id');
             $table->string('str_category')
                 ->unique();
+            $table->timestamps();
+            $table->softDeletes();
 
         });
     }
