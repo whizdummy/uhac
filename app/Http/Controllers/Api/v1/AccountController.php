@@ -8,6 +8,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\ApiModel\v1\Account;
+use App\ApiModel\v1\Session;
+
+use Carbon\Carbon;
+use DB;
 
 class AccountController extends Controller
 {
@@ -46,7 +50,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         try{
-            \DB::beginTransaction();
+            DB::beginTransaction();
             $account            =   Account::create([
                 'str_name'          =>  $request->str_name,
                 'date_birthday'     =>  $request->date_birthday,
@@ -78,7 +82,7 @@ class AccountController extends Controller
                 );
         }catch(Exception $e){
 
-            \DB::rollBack();
+            DB::rollBack();
             return response()
                 ->json(
                     [
