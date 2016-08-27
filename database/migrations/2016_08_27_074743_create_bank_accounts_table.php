@@ -18,10 +18,11 @@ class CreateBankAccountsTable extends Migration
             $table->increments('int_bank_account_id');
             $table->integer('int_account_id_fk')
                 ->unsigned();
-            $table->string('str_account_no')
-                ->unique();
+            $table->string('str_account_no');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['int_account_id_fk', 'str_account_no']);
 
             $table->foreign('int_account_id_fk')
                 ->references('int_account_id')

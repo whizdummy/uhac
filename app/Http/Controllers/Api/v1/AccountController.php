@@ -68,14 +68,14 @@ class AccountController extends Controller
                 'str_account_no'        =>  'Cash'
             ]);
 
-            $session            =   Session::create([
-                'int_account_id_fk'     =>  $account->int_account_id,
-                'dat_last'              =>  Carbon::now(),
-                'str_serial'            =>  $request->str_serial,
-                'str_phone_model'       =>  $request->str_phone_model,
-                'str_phone_platform'    =>  $request->str_phone_platform,
-                'str_version'           =>  $request->str_version
-            ]);
+            // $session            =   Session::create([
+            //     'int_account_id_fk'     =>  $account->int_account_id,
+            //     'dat_last'              =>  Carbon::now(),
+            //     'str_serial'            =>  $request->str_serial,
+            //     'str_phone_model'       =>  $request->str_phone_model,
+            //     'str_phone_platform'    =>  $request->str_phone_platform,
+            //     'str_version'           =>  $request->str_version
+            // ]);
 
             //send message for otp
 
