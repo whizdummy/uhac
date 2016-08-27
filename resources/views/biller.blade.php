@@ -56,7 +56,7 @@
    <div id="inputModal" class="modal modal-fixed-footer" style="height: 40% !important; width: 50% !important; border-radius: 10px;">
    
      <div class="modal-content">
-     <form ng-submit="vm.saveBiller()">
+     <form ng-submit="vm.saveBiller()" autocomplete="off">
      <h3 class="indigo-text light center" >Add Biller</h3>
        <div class="input-field col s12">
          <input ng-model='vm.biller.str_biller' id="first_name" type="text" class="validate" style="font-size: 21px;">
@@ -64,7 +64,7 @@
        </div>
      </div>
      <div class="modal-footer">
-       <button name="action" class="modal-action waves-effect waves-green orange darken-2 btn">ADD</button>
+       <button name="action" type="submit" class="modal-action waves-effect waves-green orange darken-2 btn">ADD</button>
      </div>
    </form>
    </div>

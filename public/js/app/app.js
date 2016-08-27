@@ -16,8 +16,9 @@
 			});
 		})
 		.factory('Category', function($resource){
-			return $resource(apiUrl+'v1/categories/:id', {
-				id 			: 	'@id'
+			return $resource(apiUrl+'v1/categories/:id/:method', {
+				id 			: 	'@id',
+				method 		: 	'@method'
 			},{
 				update 		: 	{
 					method 	: 	'PUT',

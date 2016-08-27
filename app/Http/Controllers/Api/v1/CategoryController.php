@@ -52,7 +52,8 @@ class CategoryController extends Controller
         return response()
             ->json(
                 [
-                    'category'          =>  $category
+                    'category'          =>  $category,
+                    'message'           =>  'Category is successfully created.'
                 ],
                 201
             );
@@ -104,7 +105,8 @@ class CategoryController extends Controller
         return response()
             ->json(
                 [
-                    'category'          =>  $category
+                    'category'          =>  $category,
+                    'message'           =>  'Category is successfully updated.'
                 ],
                 201
             );
@@ -134,7 +136,8 @@ class CategoryController extends Controller
     public function queryCategory($id){
 
         $categories             =   Category::select(
-            'str_category'
+            'str_category',
+            'int_category_id'
             );
 
         if ($id){

@@ -37,6 +37,7 @@
 		   			$('#inputModal').closeModal();
 		   			vm.biller 			=	null;
 		   			Materialize.toast(data.message, 2000);
+		   			update 				=	false;
 
 		   		})
 		   			.catch(function(response){
