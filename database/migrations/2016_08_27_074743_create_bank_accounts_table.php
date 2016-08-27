@@ -21,6 +21,7 @@ class CreateBankAccountsTable extends Migration
             $table->string('str_account_no')
                 ->unique();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('int_account_id_fk')
                 ->references('int_account_id')
