@@ -26,6 +26,7 @@ class CreateGoalsTable extends Migration
             $table->date('date_due');
             $table->date('date_achieved')
                 ->nullable();
+            $table->timestamps();
 
             $table->foreign('int_account_id_fk')
                 ->references('int_account_id')
