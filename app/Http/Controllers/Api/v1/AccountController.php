@@ -73,6 +73,8 @@ class AccountController extends Controller
 
             //send message for otp
 
+            DB::commit();
+
             return response()
                 ->json(
                     [

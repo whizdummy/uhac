@@ -15,4 +15,5 @@ class Session extends Model
    		'str_phone_platform',
    		'str_version',
    		'str_serial'
+   	];
 }
