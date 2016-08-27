@@ -81,7 +81,7 @@
 		   	billerToDelete.$delete(function(data){
 
 		   		vm.billers.splice(index, 1);
-		   		Materialize.toast(data.message);
+		   		Materialize.toast(data.message, 2000);
 
 		   	}, function(response){
 
