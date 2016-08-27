@@ -14,6 +14,8 @@ class Account extends Model
     	'int_gender',
     	'int_civil_status',
     	'str_username',
-    	'str_password'
+    	'str_password',
+    	'str_email',
+    	'str_contact'
    	];
 }

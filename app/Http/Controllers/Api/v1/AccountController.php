@@ -53,7 +53,7 @@ class AccountController extends Controller
             DB::beginTransaction();
             $account            =   Account::create([
                 'str_name'          =>  $request->str_name,
-                'date_birthday'     =>  $request->date_birthday,
+                'date_birthday'     =>  Carbon::parse($request->date_birthday),
                 'int_gender'        =>  $request->int_gender,
                 'int_civil_status'  =>  $request->int_civil_status,
                 'str_username'      =>  $request->str_username,
@@ -167,8 +167,17 @@ class AccountController extends Controller
 
     public function queryAccount($id){
 
-        $accounts           =   Account::select()
-            ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_bank_account_id');
+        $accounts           =   Account::select(
+            'accounts.int_account_id',
+            'accounts.str_name',
+            'accounts.date_birthday',
+            'accounts.int_gender',
+            'accounts.int_civil_status',
+            'accounts.str_email',
+            'accounts.str_contact',
+            'bank_accounts.str_account_no'
+            )
+            ->leftJoin('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk');
 
         if ($id){
             return $accounts->where('accounts.int_account_id', '=', $id)
