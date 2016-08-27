@@ -64,7 +64,7 @@
        </div>
      </div>
      <div class="modal-footer">
-       <button name="action" type="submit" class="modal-action waves-effect waves-green orange darken-2 btn">ADD</button>
+       <button name="action" type="submit" class="modal-action waves-effect waves-green orange darken-2 btn">SAVE</button>
      </div>
    </form>
    </div>

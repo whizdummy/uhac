@@ -14,7 +14,7 @@
 			var vm = this;
 			var update			=	null;
 			
-			   vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(10);
+			   vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
 			   vm.dtColumnDefs = [
 			       DTColumnDefBuilder.newColumnDef(0),
 			       DTColumnDefBuilder.newColumnDef(1)

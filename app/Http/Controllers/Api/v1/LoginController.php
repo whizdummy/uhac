@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use ApiModel\v1\Account;
-use ApiModel\v1\Session;
+use App\ApiModel\v1\Account;
+use App\ApiModel\v1\Session;
 
 use Carbon\Carbon;
 
