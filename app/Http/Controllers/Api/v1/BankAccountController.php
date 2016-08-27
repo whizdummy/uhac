@@ -100,9 +100,19 @@ class BankAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $idBankAccount)
     {
-        //
+        $bank_account               =   BankAccount::find($idBankAccount);
+
+        $bank_account->delete();
+
+        return response()
+            ->json(
+                [
+                    'message'           =>  'Account number is successfully removed from the account.'
+                ],
+                201
+            );
     }
 
     public function queryBankAccount($id){
@@ -111,7 +121,8 @@ class BankAccountController extends Controller
             'accounts.str_name',
             'bank_accounts.str_account_no'
             )
-            ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk');
+            ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk')
+            ->whereNull('bank_accounts.deleted_at');
 
         if ($id){
 

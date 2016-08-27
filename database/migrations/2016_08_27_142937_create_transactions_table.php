@@ -34,6 +34,11 @@ class CreateTransactionsTable extends Migration
                 ->nullable();
             $table->string('str_transfer_currency')
                 ->nullable();
+            $table->integer('int_category_id_fk')
+                ->unsigned()
+                ->nullable();
+            $table->decimal('deci_value')
+                ->nullable();
             $table->timestamps();
 
             $table->foreign('int_bank_account_id_fk')
@@ -51,6 +56,12 @@ class CreateTransactionsTable extends Migration
             $table->foreign('int_transfer_account_id_fk')
                 ->references('int_bank_account_id')
                 ->on('bank_accounts')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+
+            $table->foreign('int_category_id_fk')
+                ->references('int_category_id')
+                ->on('categories')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
