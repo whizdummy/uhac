@@ -21,7 +21,7 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container white z-depth-1" style="border-radius: 10px;">
       <div class="row z-depth-2">
-        <h1 class="orange white-text darken-1" style="border-top-left: 10px !important; border-top-right: 10px !important; margin-bottom: 0;">Category <span class="thin"> Mainetenance</span></h1>
+        <h1 class="orange white-text darken-1" style="border-top-left: 10px !important; border-top-right: 10px !important; margin-bottom: 0;">Category <span class="thin"> Maintenance</span></h1>
 
       </div>
       <div class="row right">
