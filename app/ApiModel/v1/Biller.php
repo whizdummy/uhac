@@ -3,6 +3,7 @@
 namespace App\ApiModel\v1;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Biller extends Model
 {
@@ -11,4 +12,7 @@ class Biller extends Model
     protected $fillable = [
    		'str_biller' 
    	];
+
+   	protected $dates 	=	['deleted_at'];
+   	use SoftDeletes;
 }

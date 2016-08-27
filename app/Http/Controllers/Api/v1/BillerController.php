@@ -52,7 +52,8 @@ class BillerController extends Controller
         return response()
             ->json(
                 [
-                    'biller'        =>  $biller
+                    'biller'        =>  $biller,
+                    'message'       =>  'Biller is successfully saved.'
                 ],
                 201
             );
@@ -104,7 +105,8 @@ class BillerController extends Controller
         return response()
             ->json(
                 [
-                    'biller'        =>  $biller
+                    'biller'        =>  $biller,
+                    'message'       =>  'Biller is successfully updated.'
                 ],
                 200
             );
@@ -118,17 +120,26 @@ class BillerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $biller             =   Biller::find($id);
+        $biller->delete();
+        return response()
+            ->json(
+                [
+                    'message'   =>  'Biller is successfully deleted.'
+                ],
+                200
+            );
     }
 
     public function queryBiller($id){
 
         $billers            =   Biller::select(
+            'int_bill_id',
             'str_biller'
             );
 
         if ($id){
-            return $billers->where('int_biller_id', '=', $id)
+            return $billers->where('int_bill_id', '=', $id)
                 ->first();
         }
 

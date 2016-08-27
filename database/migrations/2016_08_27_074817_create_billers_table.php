@@ -19,6 +19,7 @@ class CreateBillersTable extends Migration
             $table->string('str_biller')
                 ->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

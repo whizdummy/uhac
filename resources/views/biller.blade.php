@@ -38,11 +38,11 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr ng-repeat="person in vm.persons">
-                      <td>@{{ person.firstName }}</td>
+                  <tr ng-repeat="biller in vm.billers">
+                      <td>@{{ biller.str_biller }}</td>
                       <td>
-                        <a class="btn indigo darken-4 btn-large modal-trigger col s4" href="#inputModal"  style="margin-right: 5px;"><i class="material-icons">edit</i></a>
-                        <a class="btn red darken-4 btn-large modal-trigger col s4" href="#inputModal"><i class="material-icons">delete</i></a>
+                        <a ng-click="vm.updateBiller(biller, $index)" class="btn indigo darken-4 btn-large modal-trigger col s4" style="margin-right: 5px;"><i class="material-icons">edit</i></a>
+                        <a ng-click="vm.deleteBiller(biller, $index)" class="btn red darken-4 btn-large modal-trigger col s4"><i class="material-icons">delete</i></a>
                       </td>
                   </tr>
                   </tbody>
@@ -56,15 +56,17 @@
    <div id="inputModal" class="modal modal-fixed-footer" style="height: 40% !important; width: 50% !important; border-radius: 10px;">
    
      <div class="modal-content">
+     <form ng-submit="vm.saveBiller()">
      <h3 class="indigo-text light center" >Add Biller</h3>
        <div class="input-field col s12">
-         <input id="first_name" type="text" class="validate" style="font-size: 21px;">
+         <input ng-model='vm.biller.str_biller' id="first_name" type="text" class="validate" style="font-size: 21px;">
          <label for="first_name">Biller Name</label>
        </div>
      </div>
      <div class="modal-footer">
-       <a href="#!" class="modal-action modal-close waves-effect waves-green orange darken-2 btn">ADD</a>
+       <button name="action" class="modal-action waves-effect waves-green orange darken-2 btn">ADD</button>
      </div>
+   </form>
    </div>
 
 
