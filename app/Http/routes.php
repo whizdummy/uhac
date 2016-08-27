@@ -24,7 +24,10 @@ Route::group(['prefix' => 'api/finapp'], function(){
 
 			Route::group(['prefix' => '{id}'], function(){
 
-				Route::resource('bank-accounts', 'Api\v1\BankAccountController');
+				Route::group(['prefix' => 'bank-accounts'], function() {
+					Route::resource('/', 'Api\v1\BankAccountController');
+					Route::resource('{id}/transactions', 'Api\v1\TransactionController');
+				});
 
 			});
 
@@ -32,6 +35,7 @@ Route::group(['prefix' => 'api/finapp'], function(){
 		Route::resource('accounts', 'Api\v1\AccountController');
 		Route::resource('billers', 'Api\v1\BillerController');
 		Route::resource('business-dependencies', 'Api\v1\BusinessDependencyController');
+		Route::resource('categories', 'Api\v1\CategoryController');
 
 	});
 

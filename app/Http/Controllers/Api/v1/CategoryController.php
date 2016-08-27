@@ -7,22 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\ApiModel\v1\Account;
-use App\ApiModel\v1\BankAccount;
+use App\ApiModel\v1\Category;
 
-class BankAccountController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         return response()
             ->json(
                 [
-                    'bank_accounts'         =>  $this->queryBankAccount($id)
+                    'categories'        =>  $this->queryCategory(null)
                 ],
                 200
             );
@@ -44,17 +43,16 @@ class BankAccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id, Request $request)
+    public function store(Request $request)
     {
-        $bank_account           =   BankAccount::create([
-            'int_account_id_fk'         =>  $id,
-            'str_account_no'            =>  $request->str_account_no
+        $category           =   Category::create([
+            'str_category'          =>  $request->str_category
         ]);
 
         return response()
             ->json(
                 [
-                    'bank_account'          =>  $bank_account
+                    'category'          =>  $category
                 ],
                 201
             );
@@ -79,7 +77,13 @@ class BankAccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        return response()
+            ->json(
+                [
+                    'category'          =>  $this->queryCategory($id)
+                ],
+                200
+            );
     }
 
     /**
@@ -91,7 +95,19 @@ class BankAccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category           =   Category::find($id);
+
+        $category->str_category         =   $request->str_category;
+
+        $category->save();
+
+        return response()
+            ->json(
+                [
+                    'category'          =>  $category
+                ],
+                201
+            );
     }
 
     /**
@@ -100,38 +116,33 @@ class BankAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $idBankAccount)
+    public function destroy($id)
     {
-        $bank_account               =   BankAccount::find($idBankAccount);
+        $category           =   Category::find($id);
 
-        $bank_account->delete();
+        $category->delete();
 
         return response()
             ->json(
                 [
-                    'message'           =>  'Account number is successfully removed from the account.'
+                    'message'           =>  'Category is successfully deleted.'
                 ],
                 201
             );
     }
 
-    public function queryBankAccount($id){
+    public function queryCategory($id){
 
-        $bank_accounts          =   Account::select(
-            'accounts.str_name',
-            'bank_accounts.str_account_no'
-            )
-            ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk')
-            ->whereNull('bank_accounts.deleted_at');
+        $categories             =   Category::select(
+            'str_category'
+            );
 
         if ($id){
+            return $categories->where('int_category_id', '=', $id)
+                ->first();
+        }
 
-            return $bank_accounts->where('accounts.int_account_id', '=', $id)
-                ->get();
-
-        }//end if
-
-        return $bank_accounts->get();
+        return $categories->get();
 
     }//end function
 }
