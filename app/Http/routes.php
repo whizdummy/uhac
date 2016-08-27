@@ -41,7 +41,7 @@ Route::group(['prefix' => 'api/finapp'], function(){
 		Route::resource('billers', 'Api\v1\BillerController');
 		Route::resource('business-dependencies', 'Api\v1\BusinessDependencyController');
 		Route::resource('categories', 'Api\v1\CategoryController');
-		Route::resource('logins', 'Api\v1\LoginController');
+		Route::resource('sessions', 'Api\v1\LoginController');
 	});
 
 });

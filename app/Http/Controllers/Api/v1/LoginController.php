@@ -114,6 +114,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 
     }
 }
