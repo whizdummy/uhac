@@ -23,7 +23,6 @@ class CreateTransactionsTable extends Migration
                 ->unsigned()
                 ->nullable();
             $table->integer('int_transaction_type')
-                ->unique()
                 ->nullable();
             $table->integer('int_transfer_account_id_fk')
                 ->unsigned()

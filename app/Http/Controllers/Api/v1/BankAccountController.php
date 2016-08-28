@@ -119,7 +119,8 @@ class BankAccountController extends Controller
 
         $bank_accounts          =   Account::select(
             'accounts.str_name',
-            'bank_accounts.str_account_no'
+            'bank_accounts.str_account_no',
+            'bank_accounts.int_bank_account_id'
             )
             ->join('bank_accounts', 'accounts.int_account_id', '=', 'bank_accounts.int_account_id_fk')
             ->whereNull('bank_accounts.deleted_at');

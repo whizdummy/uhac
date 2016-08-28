@@ -96,16 +96,18 @@ class TransactionController extends Controller
             );
         }
 
-        $transaction->int_bank_account_id_fk        =   $request->int_bank_account_id;
+        $expenseData = json_decode($request->expenseData);
+
+        $transaction->int_bank_account_id_fk        =   (int) $expenseData->int_bank_account_id;
         $transaction->int_transaction_type          =   $request->transactionType;
-        $transaction->int_category_id_fk            =   $request->int_category_id;
-        $transaction->deci_value                    =   $request->deci_value;
-        $transaction->int_bill_id_fk                =   $request->int_bill_id;
-        $transaction->int_transfer_account_id_fk    =   $request->int_transfer_account_id;
-        $transaction->str_confirmation_no           =   $request->str_confirmation_no;
-        $transaction->str_source_currency           =   $request->str_source_currency;
-        $transaction->str_transfer_currency         =   $request->str_transfer_currency;
-        $transaction->boolStatus                    =   $request->status == 'S'? 1: 0;
+        $transaction->int_category_id_fk            =   (int) $expenseData->int_category_id;
+        $transaction->deci_value                    =   $expenseData->deci_value;
+        $transaction->int_bill_id_fk                =   isset($expenseData->int_bill_id) ? $expenseData->int_bill_id : null;
+        $transaction->int_transfer_account_id_fk    =   isset($expenseData->int_transfer_account_id) ? $expenseData->int_transfer_account_id : null;
+        $transaction->str_confirmation_no           =   isset($expenseData->str_confirmation_no) ? $expenseData->str_confirmation_no : null;
+        $transaction->str_source_currency           =   isset($expenseData->source_currency) ? $expenseData->source_currency : null;
+        $transaction->str_transfer_currency         =   isset($expenseData->str_transfer_currency) ? $expenseData->str_transfer_currency : null;
+        $transaction->boolStatus                    =   $expenseData->status == "S" ? 1: 0;
 
         $transaction->save();
 
