@@ -21,7 +21,8 @@ class CreateGoalsTable extends Migration
             $table->integer('int_category_id_fk')
                 ->unsigned();
             $table->string('str_goal_name');
-            $table->text('txt_remarks');
+            $table->text('txt_remarks')
+                ->nullable();
             $table->decimal('deci_value');
             $table->date('date_due');
             $table->date('date_achieved')

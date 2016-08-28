@@ -26,8 +26,8 @@ Route::group(['prefix' => 'api/finapp'], function(){
 		Route::group(['prefix' => 'accounts'], function(){
 
 			Route::group(['prefix' => '{id}'], function(){
-
-				Route::resource('goals', 'Goal\v1\GoalController');
+				Route::resource('goals', 'Api\v1\GoalController');
+				Route::get('transactions', 'Api\v1\TransactionController@getAccountTransactions');
 
 				Route::group(['prefix' => 'bank-accounts'], function() {
 					Route::resource('/', 'Api\v1\BankAccountController');

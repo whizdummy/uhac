@@ -130,4 +130,23 @@ class TransactionController extends Controller
     {
         //
     }
+
+    public function getAccountTransactions($accountId)
+    {
+        return response()->json([
+            'account_transaction_details'   => Transaction::join('bank_accounts', 'transactions.int_bank_account_id_fk', '=', 'bank_accounts.int_bank_account_id')
+                ->join('accounts', 'bank_accounts.int_account_id_fk', '=', 'accounts.int_account_id')
+                ->where('accounts.int_account_id', '=', $accountId)
+                ->select(
+                    'transactions.created_at',
+                    'transactions.int_transaction_type',
+                    'bank_accounts.str_account_no',
+                    'transactions.deci_value',
+                    'transactions.boolStatus'
+                )
+                ->groupBy('transactions.int_bank_account_id_fk')
+                ->orderBy('transactions.created_at', 'desc')
+                ->get()
+        ]);
+    }
 }
